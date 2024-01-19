@@ -48,6 +48,15 @@
 
         }
 
+        @media screen and (max-width: 425px) {
+            div.question-board {
+                top: 20vh;
+                width: 64%;
+                height: 100px;
+                /* font-weight: bold; */
+                font-size: 15pt;
+            }
+        }
         @media screen and (max-width: 380px) {
             div.question-board {
                 top: 17vh;
