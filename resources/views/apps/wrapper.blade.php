@@ -4,7 +4,18 @@
 
 <body>
     <style>
+        @font-face {
+            font-family: "Core Narae";
+            src: url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.eot");
+            src: url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.eot?#iefix")format("embedded-opentype"),
+                url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.woff2")format("woff2"),
+                url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.woff")format("woff"),
+                url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.ttf")format("truetype"),
+                url("https://db.onlinewebfonts.com/t/d133af06cd91ba4a1fa4b9ccea3f4a35.svg#Core Narae Pro W01 Pro")format("svg");
+        }
+
         body {
+            font-family: 'Core Narae';
             background-image: url('img/elements/main-bg.png');
         }
 
@@ -31,6 +42,7 @@
             border: none !important;
             background-color: transparent !important;
         }
+
         .input-mask>input:focus,
         .input-mask>select:focus {
             box-shadow: none !important;
