@@ -5,6 +5,12 @@
 
 @section('content')
     <style>
+        @media screen and (max-width: 400px) {
+            .centered-img.pyramid {
+                top: 70% !important;
+                height: 350px;
+            }
+        }
         @media screen and (max-width: 600px) {
             .centered-img.chest {
                 top: 30%;
@@ -20,8 +26,7 @@
 
             .centered-img.pyramid {
                 top: 65%;
-                height: 500px;
-                width: 470px;
+                width: 90%;
             }
         }
 
@@ -47,5 +52,5 @@
     <img class="centered-img top" src="{{ asset('img/elements/4.png') }}" alt="" style="top: 23%;">
     <img class="centered-img chest" src="{{ asset('img/elements/chest-closed.png') }}" alt="">
     {{-- <img class="centered-img chest-opening" src="{{ asset('img/elements/chest-opening.gif') }}" alt=""> --}}
-    <img class="centered-img pyramid" src="{{ asset('img/elements/16.png') }}" alt="">
+    <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid.png') }}" alt="">
 @endsection

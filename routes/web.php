@@ -21,6 +21,6 @@ Route::get('/introduce', function () {
     return view('apps.register');
 });
 Route::post('/introduce', [RegisterController::class, 'register'])->name('register');
-Route::group(['prefix' => 'mood-board', 'as' => 'mood-board.'], function () {
-    Route::get('/', function () { return view('apps.mood-board.index'); })->name('index');
+Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
+    Route::get('/', function () { return view('apps.mission.index'); })->name('index');
 });

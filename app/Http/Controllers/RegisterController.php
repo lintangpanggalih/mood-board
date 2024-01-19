@@ -36,6 +36,6 @@ class RegisterController extends Controller
             ];
         }
         // DB::rollBack();
-        return redirect()->route('mood-board.index');
+        return redirect()->route('mission.index');
     }
 }

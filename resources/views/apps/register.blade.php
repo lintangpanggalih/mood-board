@@ -9,19 +9,19 @@
         <form class="my-5" action="{{ route('register') }}" method="POST" style="color: #000;">
             @csrf
             <div class="row mb-1">
-                <label for="name" class="col-12 mb-0"><b>Nama Lengkap</b></label>
+                <label for="name" class="col-12 mb-0" style="font-weight: bold;"><b>Nama Lengkap</b></label>
                 <div class="col input-mask">
                     <input name="name" class="form-control" type="text" required>
                 </div>
             </div>
             <div class="row mb-1">
-                <label for="birth_date" class="col-12 mb-0"><b>Tanggal Lahir</b></label>
+                <label for="birth_date" class="col-12 mb-0" style="font-weight: bold;"><b>Tanggal Lahir</b></label>
                 <div class="col input-mask">
                     <input name="birth_date" class="form-control" type="date" required>
                 </div>
             </div>
             <div class="row mb-1">
-                <label for="gender" class="col-12 mb-0"><b>Jenis Kelamin</b></label>
+                <label for="gender" class="col-12 mb-0" style="font-weight: bold;"><b>Jenis Kelamin</b></label>
                 <div class="col input-mask">
                     <select class="form-control" name="gender" id="gender" required>
                         <option value="male">Laki-laki</option>
@@ -30,19 +30,19 @@
                 </div>
             </div>
             <div class="row mb-1">
-                <label for="weight" class="col-12 mb-0"><b>Berat Badan</b></label>
+                <label for="weight" class="col-12 mb-0" style="font-weight: bold;"><b>Berat Badan</b></label>
                 <div class="col input-mask">
                     <input name="weight" class="form-control" type="number" required>
                 </div>
             </div>
             <div class="row mb-1">
-                <label for="height" class="col-12 mb-0"><b>Tinggi Badan</b></label>
+                <label for="height" class="col-12 mb-0" style="font-weight: bold;"><b>Tinggi Badan</b></label>
                 <div class="col input-mask">
                     <input name="height" class="form-control" type="number" required>
                 </div>
             </div>
             <div class="row mb-1">
-                <label for="phone" class="col-12 mb-0"><b>Nomor Whatsapp</b></label>
+                <label for="phone" class="col-12 mb-0" style="font-weight: bold;"><b>Nomor Whatsapp</b></label>
                 <div class="col input-mask">
                     <input name="phone" class="form-control" type="number" required>
                 </div>
