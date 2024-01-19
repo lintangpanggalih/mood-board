@@ -94,7 +94,7 @@
     <script>
         $(document).click(function() {
             $('#chest').html(`
-                <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop.gif" alt="">
+                <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-small.gif" alt="">
             `);
 
             let complete_1_img = $(
