@@ -130,7 +130,7 @@
         @endif
     </div>
 
-    <div class="container" style="height: 100vh;padding-top: 80vh;">
+    <div class="container" style="height: 100vh;padding-top: 85vh;">
         <div class="mt-5 text-center">
             <a href="{{ route('mission.question') }}" class="btn-submit-img next" style="display: none;">
                 <img src="{{ asset('img/elements/7.png') }}" alt="" height="70px">
