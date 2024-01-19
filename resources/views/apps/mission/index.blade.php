@@ -8,8 +8,8 @@
         .slide {
             position: absolute;
             left: -300px;
-            -webkit-animation: slide 0.5s forwards;
-            animation: slide 0.5s forwards;
+            -webkit-animation: slide 2s forwards;
+            animation: slide 2s forwards;
             -webkit-animation-delay: 1.5s;
             animation-delay: 1.5s;
         }
@@ -21,8 +21,24 @@
         }
 
         @keyframes slide {
-            100% {
+            20% {
                 left: 0;
+            }
+
+            50% {
+                left: 0;
+            }
+
+            70% {
+                left: 0;
+            }
+
+            99.9% {
+                left: 150vh;
+            }
+
+            100% {
+                display: none;
             }
         }
 
@@ -77,6 +93,28 @@
                 height: 35vh;
                 width: auto;
             }
+
+            @keyframes slide {
+                20% {
+                    left: 0;
+                }
+
+                50% {
+                    left: 0;
+                }
+
+                70% {
+                    left: 0;
+                }
+
+                99.9% {
+                    left: 150vh;
+                }
+
+                100% {
+                    display: none;
+                }
+            }
         }
     </style>
     <img class="centered-img top" src="{{ asset('img/elements/4.png') }}" alt="" style="top: 23%;">
@@ -93,18 +131,19 @@
 @push('scripts')
     <script>
         $(document).click(function() {
-            $('#chest').html(`
-                <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
-            `);
+            // $('#chest').html(`
+        //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
+        // `);
 
-            let complete_1_img = $(
-                    '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">').hide()
-                .fadeIn(500)
-            $('#pyramid').append(complete_1_img)
-            let complete_2_img = $(
-                    '<img class="centered-img pyramid" src="img/elements/pyramid-2-complete.png" alt="">').hide()
-                .fadeIn(500)
-            $('#pyramid').append(complete_2_img)
+            // 
+            // let complete_1_img = $(
+            //         '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">').hide()
+            //     .fadeIn(500)
+            // $('#pyramid').append(complete_1_img)
+            // let complete_2_img = $(
+            //         '<img class="centered-img pyramid" src="img/elements/pyramid-2-complete.png" alt="">').hide()
+            //     .fadeIn(500)
+            // $('#pyramid').append(complete_2_img)
         })
     </script>
 @endpush
