@@ -36,7 +36,7 @@
                 width: 64%;
                 height: 100px;
                 /* font-weight: bold; */
-                font-size: 18pt;
+                font-size: 17pt;
             }
 
             .answer-content {
@@ -48,13 +48,13 @@
 
         }
 
-        @media screen and (max-width: 375px) {
+        @media screen and (max-width: 380px) {
             div.question-board {
-                top: 20vh;
+                top: 17vh;
                 width: 64%;
                 height: 100px;
                 /* font-weight: bold; */
-                font-size: 16pt;
+                font-size: 15pt;
             }
 
             .answer-content {
