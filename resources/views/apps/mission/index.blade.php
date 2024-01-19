@@ -1,6 +1,6 @@
 @extends('apps.wrapper')
 @section('title')
-    Home
+    Mission Board
 @endsection
 
 @section('content')
@@ -117,20 +117,41 @@
             }
         }
     </style>
+
     <img class="centered-img top" src="{{ asset('img/elements/4.png') }}" alt="" style="top: 23%;">
     <div id="chest">
         <img class="centered-img chest-opening" src="{{ asset('img/elements/chest-closed-0.png') }}" alt="">
-        {{-- <img class="centered-img chest-opening" src="{{ asset('img/elements/chest-opening.gif') }}" alt=""> --}}
     </div>
-    <div class="container" id="pyramid">
+    <div id="pyramid">
         <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid1.png') }}" alt="">
-        {{-- <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid1.png') }}" alt=""> --}}
-        <img class="centered-img lets-go slide" src="{{ asset('img/elements/lets-go.png') }}" alt="">
+
+        @if (!session()->has('answers'))
+            <img class="centered-img lets-go slide" src="{{ asset('img/elements/lets-go.png') }}" alt="">
+        @endif
+    </div>
+
+    <div class="container" style="height: 100vh;padding-top: 80vh;">
+        <div class="mt-5 text-center">
+            <a href="{{ route('mission.question') }}" class="btn-submit-img next" style="display: none;">
+                <img src="{{ asset('img/elements/7.png') }}" alt="" height="70px">
+            </a>
+        </div>
     </div>
 @endsection
 @push('scripts')
     <script>
-        $(document).click(function() {
+        $(document).ready(function() {
+            setTimeout(() => {
+                let complete_1_img = $(
+                        '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">'
+                    ).hide()
+                    .fadeIn(500)
+                $('#pyramid').append(complete_1_img)
+            }, 3500);
+            setTimeout(() => {
+                $('.next').fadeIn(500);
+            }, 4000);
+
             // $('#chest').html(`
         //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
         // `);

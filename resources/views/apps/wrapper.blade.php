@@ -28,7 +28,7 @@
 
         body {
             font-family: 'Core Narae', 'Core Narae Bold', Arial, Helvetica, sans-serif;
-            background-image: url('img/elements/main-bg.png');
+            background-image: url({{asset('img/elements/main-bg.png')}});
         }
 
         input,
