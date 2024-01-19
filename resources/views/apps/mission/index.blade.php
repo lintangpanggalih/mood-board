@@ -7,11 +7,11 @@
     <style>
         .slide {
             position: absolute;
-            left: -200px;
+            left: -300px;
             -webkit-animation: slide 0.5s forwards;
             animation: slide 0.5s forwards;
-            /* -webkit-animation-delay: 2s; */
-            /* animation-delay: 2s; */
+            -webkit-animation-delay: 1.5s;
+            animation-delay: 1.5s;
         }
 
         @-webkit-keyframes slide {
@@ -94,7 +94,7 @@
     <script>
         $(document).click(function() {
             $('#chest').html(`
-                <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-small.gif" alt="">
+                <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
             `);
 
             let complete_1_img = $(
