@@ -5,12 +5,12 @@
 
 @section('content')
     <style>
-        @media screen and (max-width: 400px) {
+        /* @media screen and (max-width: 400px) {
             .centered-img.pyramid {
                 top: 70% !important;
                 height: 350px;
             }
-        }
+        } */
         @media screen and (max-width: 600px) {
             .centered-img.chest {
                 top: 30%;
@@ -25,8 +25,9 @@
             }
 
             .centered-img.pyramid {
-                top: 65%;
-                width: 90%;
+                bottom: 100px;
+                transform: translate(-50%, -10%);
+                width: 45vh;
             }
         }
 
