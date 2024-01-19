@@ -7,7 +7,7 @@
     <style>
         @media only screen and (max-device-width: 600px) and (orientation:portrait) {
             .centered-img.chest {
-                top: 30%;
+                top: 28%;
                 width: 120px;
                 height: auto;
             }
@@ -35,7 +35,7 @@
 
         @media screen and (min-width: 600px) {
             .centered-img.chest {
-                top: 33%;
+                top: 30%;
                 width: 120px;
                 height: auto;
             }
@@ -54,6 +54,6 @@
     </style>
     <img class="centered-img top" src="{{ asset('img/elements/4.png') }}" alt="" style="top: 23%;">
     <img class="centered-img chest" src="{{ asset('img/elements/chest-closed.png') }}" alt="">
-    <img class="centered-img chest-opening" src="{{ asset('img/elements/chest-opening.gif') }}" alt="">
+    {{-- <img class="centered-img chest-opening" src="{{ asset('img/elements/chest-opening.gif') }}" alt=""> --}}
     <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid.png') }}" alt="">
 @endsection
