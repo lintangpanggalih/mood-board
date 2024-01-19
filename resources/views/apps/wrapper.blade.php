@@ -73,7 +73,6 @@
             background-color: transparent;
         }
 
-        .btn-submit-img:target img,
         .btn-submit-img:active img {
             transform: scale(0.95);
         }
