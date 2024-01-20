@@ -76,7 +76,7 @@
             }
 
             div.question-board {
-                top: 23%;
+                top: 20%;
                 /* width: 64%; */
                 /* height: 100px; */
                 /* font-weight: bold; */
