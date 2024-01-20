@@ -47,13 +47,12 @@
                 z-index: 12;
                 font-weight: bold;
                 color: maroon;
-                font-size: 15pt;
+                font-size: 14pt;
             }
 
         }
 
         @media screen and (max-width: 425px) {
-
             .question-board-img {
                 top: 50vh;
                 width: 95vw;
@@ -62,7 +61,7 @@
 
             div.question-board {
                 top: 26vh;
-                width: 70vw;
+                width: 65vw;
                 /* height: 100px; */
                 /* font-weight: bold; */
                 font-size: 15pt;
@@ -81,14 +80,13 @@
                 /* width: 64%; */
                 /* height: 100px; */
                 /* font-weight: bold; */
-                /* font-size: 15pt; */
             }
 
             .answer-content {
                 z-index: 12;
                 font-weight: bold;
                 color: maroon;
-                font-size: 15pt;
+                font-size: 13pt;
             }
         }
 
