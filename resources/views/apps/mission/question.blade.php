@@ -36,8 +36,8 @@
             }
 
             div.question-board {
-                top: 20%;
-                width: 35vh;
+                top: 23%;
+                width: 65vw;
                 /* height: 10vh; */
                 /* font-weight: bold; */
                 font-size: 17pt;
@@ -70,16 +70,17 @@
 
         @media screen and (max-width: 415px) {
             .question-board-img {
-                top: 40vh;
+                top: 35%;
                 width: 95vw;
                 height: auto;
             }
 
             div.question-board {
-                top: 25%;
+                top: 23%;
                 /* width: 64%; */
                 /* height: 100px; */
                 /* font-weight: bold; */
+                font-size: 18px;
             }
 
             .answer-content {
