@@ -1,6 +1,6 @@
 @extends('apps.wrapper')
 @section('title')
-    Quiz
+    Mission Board
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
         @media only screen and (max-device-width: 600px) and (orientation:portrait) {
             .question-board-img {
                 top: 37%;
-                width: 48vh;
+                width: 50vh;
                 height: auto;
             }
 
@@ -54,13 +54,13 @@
 
         @media screen and (max-width: 425px) {
             .question-board-img {
-                top: 40%;
+                top: 50vh;
                 width: 95vw;
                 height: auto;
             }
 
             div.question-board {
-                top: 25%;
+                top: 26vh;
                 width: 65vw;
                 /* height: 100px; */
                 /* font-weight: bold; */

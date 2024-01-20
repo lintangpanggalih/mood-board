@@ -25,4 +25,5 @@ Route::post('/introduce', [RegisterController::class, 'register'])->name('regist
 Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
     Route::get('/', function () { return view('apps.mission.index'); })->name('index');
     Route::get('/question/{order?}', [QuestionController::class, 'show'])->name('question');
+    Route::get('/article/{di}', [QuestionController::class, 'show'])->name('question');
 });
