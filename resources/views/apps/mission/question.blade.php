@@ -25,16 +25,16 @@
         }
 
         @media only screen and (max-device-width: 600px) and (orientation:portrait) {
-            .question-board {
-                top: 37vh;
-                width: 95%;
+            .question-board-img {
+                top: 37%;
+                width: 50vh;
                 height: auto;
             }
 
             div.question-board {
-                top: 22vh;
-                width: 64%;
-                height: 100px;
+                top: 20%;
+                width: 35vh;
+                /* height: 10vh; */
                 /* font-weight: bold; */
                 font-size: 17pt;
             }
@@ -49,21 +49,32 @@
         }
 
         @media screen and (max-width: 425px) {
+            
+            .question-board-img {
+                top: 50vh;
+                width: 95vw;
+                height: auto;
+            }
             div.question-board {
-                top: 20vh;
-                width: 64%;
-                height: 100px;
+                top: 26vh;
+                width: 70vw;
+                /* height: 100px; */
                 /* font-weight: bold; */
                 font-size: 15pt;
             }
         }
-        @media screen and (max-width: 380px) {
+        @media screen and (max-width: 415px) {
+            .question-board-img {
+                top: 40vh;
+                width: 95vw;
+                height: auto;
+            }
             div.question-board {
-                top: 17vh;
-                width: 64%;
-                height: 100px;
+                top: 25%;
+                /* width: 64%; */
+                /* height: 100px; */
                 /* font-weight: bold; */
-                font-size: 15pt;
+                /* font-size: 15pt; */
             }
 
             .answer-content {
@@ -81,9 +92,9 @@
                 padding-top: 10vh;
             }
 
-            .question-board {
-                top: 48vh;
-                width: 30%;
+            .question-board-img {
+                top: 48%;
+                width: 60vh;
                 height: auto;
             }
 
@@ -104,9 +115,9 @@
             }
         }
     </style>
-    <img class="centered-img question-board" src="{{ asset('img/elements/28.png') }}" alt="">
+    <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
     <div class="container" style="height: 60vh;margin-top: 40vh;">
-        <div class="centered-img question-board">
+        <div class="centered-img question-board" style="border: red 1pt solid;">
             {{ $quiz->question }}
         </div>
         <div class="row" id="answers" style="text-align: center;">
