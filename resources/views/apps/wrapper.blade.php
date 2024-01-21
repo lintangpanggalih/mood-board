@@ -28,7 +28,7 @@
 
         body {
             font-family: 'Core Narae', 'Core Narae Bold', Arial, Helvetica, sans-serif;
-            background-image: url({{ asset('img/elements/main-bg.png') }});
+            background: linear-gradient(0deg, rgba(255, 217, 0, 0.164), rgba(168, 143, 0, 0.1)), url("{{ asset('img/elements/main-bg.png') }}");
         }
 
         input,

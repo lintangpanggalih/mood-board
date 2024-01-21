@@ -24,7 +24,7 @@ class QuizController extends Controller
     public function submit(Request $request, $quiz_id)
     {
         $answer_id = $request->answer;
-        return $data['answer'] = Answer::with('question')->find($answer_id);
+        $data['answer'] = Answer::with('question')->find($answer_id);
 
         return view('apps.reaction.wrapper-answer', $data);
     }
