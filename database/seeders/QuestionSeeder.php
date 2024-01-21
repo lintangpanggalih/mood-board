@@ -17,6 +17,8 @@ class QuestionSeeder extends Seeder
     public function run()
     {
         try {
+            Question::truncate();
+            Answer::truncate();
             DB::beginTransaction();
             $question1 = Question::create([
                 'question' => 'Pedoman gizi seimbang yang sesuai dengan anjuran Kementrian Kesehatan Republik Indonesia adalah...',
@@ -36,8 +38,8 @@ class QuestionSeeder extends Seeder
             $question2->answers()->saveMany([
                 new Answer(['option' => 'Melakukan aktifitas fisik', 'is_correct' => false]),
                 new Answer(['option' => 'Memantau berat & tinggi badan berkala', 'is_correct' => false]),
-                new Answer(['option' => 'Perilaku hidup bersih & sehat', 'is_correct' => true]),
-                new Answer(['option' => 'Puasa & olahraga 1 jam perhari', 'is_correct' => false]),
+                new Answer(['option' => 'Perilaku hidup bersih & sehat', 'is_correct' => false]),
+                new Answer(['option' => 'Puasa & olahraga 1 jam perhari', 'is_correct' => true]),
             ]);
 
             $question3 = Question::create([

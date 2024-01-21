@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ArticleApiController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::get('/introduce', function () {
 Route::post('/introduce', [RegisterController::class, 'register'])->name('register');
 Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
     Route::get('/', function () { return view('apps.mission.index'); })->name('index');
-    Route::get('/question/{order?}', [QuestionController::class, 'show'])->name('question');
-    Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article');
+    Route::get('/question/{order?}', [QuizController::class, 'show'])->name('question');
+    Route::post('/question/{quiz_id}/submit', [QuizController::class, 'submit'])->name('question.answer');
+    Route::get('/article/{id}', [ArticleApiController::class, 'show'])->name('article');
 });

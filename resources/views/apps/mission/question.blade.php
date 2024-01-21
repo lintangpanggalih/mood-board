@@ -130,31 +130,35 @@
         <div class="centered-img question-board">
             {{ $quiz->question }}
         </div>
-        <div class="row" id="answers" style="text-align: center;">
-            @if ($quiz->order % 2 == 0)
-                @foreach ($quiz->answers as $answer)
-                    <div class="col-6 p-0 m-0">
-                        <button class="btn-submit-img">
-                            <img src="{{ asset('img/elements/30.png') }}" alt="" height="auto" width="100%">
-                            <div class="centered-img answer-content cube" style="width: 70%;">
-                                {{ $answer->option }}
-                            </div>
-                        </button>
-                    </div>
-                @endforeach
-            @else
-                @foreach ($quiz->answers as $answer)
-                    <div class="col-12">
-                        <button class="btn-submit-img">
-                            <img src="{{ asset('img/elements/29-copy.png') }}" alt="" height="110vh" width="100%">
-                            <div class="centered-img answer-content">
-                                {{ $answer->option }}
-                            </div>
-                        </button>
-                    </div>
-                @endforeach
-            @endif
-        </div>
+        <form action="{{ route('mission.question.answer', [$quiz->id]) }}" method="POST">
+            <div class="row" id="answers" style="text-align: center;">
+                @csrf
+                @if ($quiz->order % 2 == 0)
+                    @foreach ($quiz->answers as $answer)
+                        <div class="col-6 p-0 m-0">
+                            <button class="btn-submit-img" name="answer" value="{{ $answer->id }}">
+                                <img src="{{ asset('img/elements/30.png') }}" alt="" height="auto" width="100%">
+                                <div class="centered-img answer-content cube" style="width: 70%;">
+                                    {{ $answer->option }}
+                                </div>
+                            </button>
+                        </div>
+                    @endforeach
+                @else
+                    @foreach ($quiz->answers as $answer)
+                        <div class="col-12">
+                            <button class="btn-submit-img" name="answer" value="{{ $answer->id }}">
+                                <img src="{{ asset('img/elements/29-copy.png') }}" alt="" height="110vh"
+                                    width="100%">
+                                <div class="centered-img answer-content">
+                                    {{ $answer->option }}
+                                </div>
+                            </button>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </form>
     </div>
 @endsection
 @push('scripts')
