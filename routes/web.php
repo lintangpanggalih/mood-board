@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,5 @@ Route::post('/introduce', [RegisterController::class, 'register'])->name('regist
 Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
     Route::get('/', function () { return view('apps.mission.index'); })->name('index');
     Route::get('/question/{order?}', [QuestionController::class, 'show'])->name('question');
-    Route::get('/article/{di}', [QuestionController::class, 'show'])->name('question');
+    Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article');
 });
