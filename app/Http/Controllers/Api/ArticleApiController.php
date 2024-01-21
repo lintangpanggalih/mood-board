@@ -9,7 +9,8 @@ class ArticleApiController
 {
     public function show($id)
     {
-        return $article = Article::find($id);
-        
+        $data['article'] = Article::find($id);
+
+        return view('apps.articles.article', $data);
     }
 }

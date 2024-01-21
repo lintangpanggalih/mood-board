@@ -37,14 +37,6 @@
                 left: 0;
             }
 
-            70% {
-                left: 0;
-            }
-
-            99.9% {
-                left: 150vh;
-            }
-
             100% {
                 display: none;
             }
@@ -127,14 +119,6 @@
                     left: 0;
                 }
 
-                70% {
-                    left: 0;
-                }
-
-                99.9% {
-                    left: 150vh;
-                }
-
                 100% {
                     display: none;
                 }
@@ -150,7 +134,7 @@
         <div id="pyramid">
             <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid1.png') }}" alt="">
 
-            @if (!session()->has('answers'))
+            @if (!session()->has('quiz.answer'))
                 <img class="centered-img lets-go slide" src="{{ asset('img/elements/lets-go.png') }}" alt="">
             @endif
         </div>
@@ -165,20 +149,20 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            setTimeout(() => {
-                let complete_1_img = $(
-                        '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">'
-                    ).hide()
-                    .fadeIn(500)
-                $('#pyramid').append(complete_1_img)
-            }, 3500);
+            // setTimeout(() => {
+            //     let complete_1_img = $(
+            //             '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">'
+            //         ).hide()
+            //         .fadeIn(500)
+            //     $('#pyramid').append(complete_1_img)
+            // }, 3500);
             setTimeout(() => {
                 $('.next').fadeIn(500);
             }, 4000);
 
             // $('#chest').html(`
-        //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
-        // `);
+            //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
+            // `);
 
             // 
             // let complete_1_img = $(

@@ -27,7 +27,13 @@
             margin-top: -20px;
             width: 100%;
         }
-
+        .centered-btn {
+            position: absolute;
+            bottom: 6vh;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 10;
+        }
         @media only screen and (max-device-width: 600px) and (orientation:portrait) {
             .question-board-img {
                 top: 37%;
@@ -123,53 +129,115 @@
             .answer-content.cube {
                 top: 20vh;
             }
+            .centered-btn {
+                bottom: 0vh;
+                top: 95vh;
+            }
         }
     </style>
-    <div class="container" style="height: 60vh;margin-top: 40vh;" id="quiz-wrapper">
-        <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
-        <div class="centered-img question-board">
-            {{ $quiz->question }}
-        </div>
-        <form action="{{ route('mission.question.answer') }}" method="POST">
-            <div class="row" id="answers" style="text-align: center;">
-                @csrf
-                <input type="text" name="quiz" value="{{ $quiz->id }}" style="display: none;">
-                <input type="text" name="quiz_order" value="{{ $quiz->order }}" style="display: none;">
-                @if ($quiz->order % 2 == 0)
-                    @foreach ($quiz->answers as $answer)
-                        <div class="col-6 p-0 m-0">
-                            <button class="btn-submit-img" name="answer" value="{{ $answer->id }}">
-                                <img src="{{ asset('img/elements/30.png') }}" alt="" height="auto" width="100%">
-                                <div class="centered-img answer-content cube" style="width: 70%;">
-                                    {{ $answer->option }}
-                                </div>
-                            </button>
-                        </div>
-                    @endforeach
-                @else
-                    @foreach ($quiz->answers as $answer)
-                        <div class="col-12">
-                            <button class="btn-submit-img" name="answer" value="{{ $answer->id }}">
-                                <img src="{{ asset('img/elements/29-copy.png') }}" alt="" height="110vh"
-                                    width="100%">
-                                <div class="centered-img answer-content">
-                                    {{ $answer->option }}
-                                </div>
-                            </button>
-                        </div>
-                    @endforeach
-                @endif
+    <div class="container" style="height: 60vh;margin-top: 40vh;">
+        <div id="quiz-wrapper">
+            <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
+            <div class="centered-img question-board">
+                {{ $quiz->question }}
             </div>
-        </form>
+            <form action="{{ route('mission.question.submit') }}" method="POST">
+                <div class="row" id="answers" style="text-align: center;">
+                    @csrf
+                    <input type="text" name="quiz" value="{{ $quiz->id }}" style="display: none;">
+                    <input type="text" name="quiz_order" value="{{ $quiz->order }}" style="display: none;">
+                    @if ($quiz->order % 2 == 0)
+                        @foreach ($quiz->answers as $answer)
+                            <div class="col-6 p-0 m-0">
+                                <button type="submit" class="btn-submit-img" name="answer" value="{{ $answer->id }}">
+                                    {{-- <input type="text" name="answer" value="{{ $answer->id }}" style="display: none;"> --}}
+                                    <img src="{{ asset('img/elements/30.png') }}" alt="" height="auto"
+                                        width="100%">
+                                    <div class="centered-img answer-content cube" style="width: 70%;">
+                                        {{ $answer->option }}
+                                    </div>
+                                </button>
+                            </div>
+                        @endforeach
+                    @else
+                        @foreach ($quiz->answers as $answer)
+                            <div class="col-12">
+                                <button type="submit" class="btn-submit-img" name="answer" value="{{ $answer->id }}">
+                                    {{-- <input type="text" name="answer" value="{{ $answer->id }}" style="display: none;"> --}}
+                                    <img src="{{ asset('img/elements/29-copy.png') }}" alt="" height="110vh"
+                                        width="100%">
+                                    <div class="centered-img answer-content">
+                                        {{ $answer->option }}
+                                    </div>
+                                </button>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="mt-5 text-center">
+        <a href="{{ route('mission.index') }}" class="centered-btn btn-submit-img next" style="display: none;">
+            <img src="{{ asset('img/elements/7.png') }}" alt="" height="70px">
+        </a>
     </div>
 @endsection
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('form').submit(function (e) {
+            $('form').submit(function(e) {
                 e.preventDefault();
-                $('#quiz-wrapper').fadeOut(1000)
+                $(this).prop('disabled', true)
+                setTimeout(() => {
+                    $('#quiz-wrapper').fadeOut(1000)
+                }, 500);
+
+                var answer_data = $("button[type=submit][clicked=true]").val(),
+                    data = $(this).serialize() + '&answer=' + answer_data;
+
+                // return console.log(data);
+                $.ajax({
+                    method: "POST",
+                    url: $(this).attr('action'),
+                    data: data,
+                    success: function(resp) {
+                        console.log(resp);
+                        let response = '', progress = resp.progress, order = Object.keys(progress).length + 1;
+                        // console.log(progress, order);
+                        if (resp.data.is_correct) {
+                            response = $(
+                                `<img class="centered-img reaction-img" src="{{ asset('img/elements/12.png') }}" alt="">`
+                            );
+                        } else {
+                            response = $(
+                                `<img class="centered-img reaction-img" src="{{ asset('img/elements/13.png') }}" alt="">`
+                            );
+                        }
+                        setTimeout(() => {
+                            response.hide().fadeIn(500)
+                            $('.container').append(response)
+                        }, 1000);
+
+                        // setTimeout(() => {
+                        //     $('.next').fadeIn(500);
+                        // }, 2000);
+                    },
+                })
             })
+
+            function loadArticle(order) {
+                let url = '{{ route("mission.article", ":order") }}'.replace('order', order)
+                console.log(url);
+                // $.get(url)
+
+            }
+            $("form button[type=submit]").click(function() {
+                $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");
+                $(this).attr("clicked", "true");
+            });
+
         })
     </script>
 @endpush
