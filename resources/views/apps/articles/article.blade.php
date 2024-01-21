@@ -35,7 +35,7 @@
                 height: auto;
             }
             div.article-board {
-                transform: translate(-50%, -55%);
+                top: 45%;
                 height: 40vh;
                 width: 70vw;
             }
@@ -43,7 +43,7 @@
         @media screen and (max-width: 400px) {
 
             div.article-board {
-                transform: translate(-50%, -50%);
+                top: 45%;
                 height: 45vh;
                 width: 70vw;
             }
