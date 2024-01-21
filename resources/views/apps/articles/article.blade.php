@@ -35,7 +35,7 @@
                 height: auto;
             }
             div.article-board {
-                transform: translate(-50%, -60%);
+                transform: translate(-50%, -55%);
                 height: 40vh;
                 width: 70vw;
             }
