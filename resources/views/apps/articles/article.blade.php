@@ -29,18 +29,18 @@
         }
 
         @media screen and (max-width: 600px) {
-            div.article-board {
-                transform: translate(-50%, -65%);
-                height: 40vh;
-                width: 70vw;
-            }
-        }
-        @media screen and (max-width: 400px) {
             .article-board-img {
                 top: 40vh;
                 width: 100vw;
                 height: auto;
             }
+            div.article-board {
+                transform: translate(-50%, -60%);
+                height: 40vh;
+                width: 70vw;
+            }
+        }
+        @media screen and (max-width: 400px) {
 
             div.article-board {
                 transform: translate(-50%, -50%);
