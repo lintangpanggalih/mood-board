@@ -16,8 +16,8 @@ class ArticleSeeder extends Seeder
     public function run()
     {
         try {
+            Article::truncate();
             DB::beginTransaction();
-
             Article::insert([
                 [
                     'content' => 'Kampanye 4 sehat 5 Sempurna ditetapkan oleh pemerintah sejak tahun 1955 agar masyarakat memahami pola makan yang benar Namun, saat ini prinsip makanan 4 sehat 5 sempurna sudah tak lagi digunakan karena dinilai tak sesuai dengan perkembangan dan permasalahan gizi saat ini. Pemerintah kemudian mengganti prinsip makanan 4 sehat 5 sempurna ini dengan

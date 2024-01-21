@@ -24,9 +24,9 @@ Route::get('/introduce', function () {
     return view('apps.register');
 });
 Route::post('/introduce', [RegisterController::class, 'register'])->name('register');
-Route::group(['prefix' => 'mission', 'as' => 'mission.'], function () {
+Route::group(['prefix' => 'mission', 'as' => 'mission.', 'middleware' => 'check-quiz'], function () {
     Route::get('/', function () { return view('apps.mission.index'); })->name('index');
+    Route::post('/question/submit', [QuizController::class, 'submit'])->name('question.answer');
     Route::get('/question/{order?}', [QuizController::class, 'show'])->name('question');
-    Route::post('/question/{quiz_id}/submit', [QuizController::class, 'submit'])->name('question.answer');
     Route::get('/article/{id}', [ArticleApiController::class, 'show'])->name('article');
 });

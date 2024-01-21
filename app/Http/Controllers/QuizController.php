@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    public function show($order = null)
+    public function show()
     {
-        if (!$order) {
-            $order = 1;
+        // return session('quiz');
+        $progress = session('quiz.answer');
+        $order = 1;
+
+        if (!empty($progress)) {
+            $order = sizeof($progress) + 1;
         }
+
         $data['quiz'] = $quiz = Question::with('answers')->where('order', $order)->first();
         if (!$quiz) {
             abort(404);
@@ -21,10 +26,23 @@ class QuizController extends Controller
         return view('apps.mission.question', $data);
     }
 
-    public function submit(Request $request, $quiz_id)
+    public function submit(Request $request)
     {
+        // $progress = session('quiz.answer');
+
         $answer_id = $request->answer;
-        $data['answer'] = Answer::with('question')->find($answer_id);
+        $data['answer'] = $answer = Answer::with('question')->find($answer_id);
+
+        $answer_data = [
+            $request->quiz_order => [
+                'question' => $request->quiz,
+                'answer' => $answer->id,
+                'is_correct' => $answer->is_correct,
+            ]
+        ];
+        // return $progress;
+        session()->put('quiz.answer', $answer_data);
+        // return session('quiz');
 
         return view('apps.reaction.wrapper-answer', $data);
     }

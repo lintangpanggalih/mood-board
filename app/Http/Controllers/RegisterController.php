@@ -19,8 +19,8 @@ class RegisterController extends Controller
         ]);
 
         try {
-            DB::beginTransaction();
-            $responden = Responden::create([
+            // DB::beginTransaction();
+            $responden = new Responden([
                 'name' => $request->name,
                 'birth_date' => $request->birth_date,
                 'gender' => $request->gender,
@@ -29,13 +29,18 @@ class RegisterController extends Controller
                 'phone' => $request->phone,
             ]);
             // return ['asd'];
+            session(['quiz' => [
+                'responden' => $responden,
+                'answer' => []
+            ]]);
+            // return dd(session('quiz'));
         } catch (\Throwable $th) {
-            DB::rollBack();
+            // DB::rollBack();
             return [
                 $th->getMessage()
             ];
         }
-        // DB::rollBack();
+        // DB::commit();
         return redirect()->route('mission.index');
     }
 }

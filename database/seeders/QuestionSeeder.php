@@ -25,7 +25,7 @@ class QuestionSeeder extends Seeder
                 'order' => 1
             ]);
             $question1->answers()->saveMany([
-                new Answer(['option' => '4 shat 5 sempurna', 'is_correct' => false]),
+                new Answer(['option' => '4 sehat 5 sempurna', 'is_correct' => false]),
                 new Answer(['option' => 'Tumpeng Gizi Seimbang', 'is_correct' => true]),
                 new Answer(['option' => 'Jiwa Sehat Raga Kuat', 'is_correct' => false]),
                 new Answer(['option' => 'Labu', 'is_correct' => false]),

@@ -14,6 +14,7 @@ class ModifyUsersTable extends Migration
     public function up()
     {
         Schema::create('respondens', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->nullable();
             $table->string('birth_date')->nullable();
             $table->string('gender')->nullable();

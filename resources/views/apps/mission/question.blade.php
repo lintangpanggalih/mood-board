@@ -1,6 +1,6 @@
 @extends('apps.wrapper')
 @section('title')
-    Quiz
+    Quiz ({{ $quiz->order ?? '-' }})
 @endsection
 
 @section('content')
@@ -125,14 +125,16 @@
             }
         }
     </style>
-    <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
-    <div class="container" style="height: 60vh;margin-top: 40vh;">
+    <div class="container" style="height: 60vh;margin-top: 40vh;" id="quiz-wrapper">
+        <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
         <div class="centered-img question-board">
             {{ $quiz->question }}
         </div>
-        <form action="{{ route('mission.question.answer', [$quiz->id]) }}" method="POST">
+        <form action="{{ route('mission.question.answer') }}" method="POST">
             <div class="row" id="answers" style="text-align: center;">
                 @csrf
+                <input type="text" name="quiz" value="{{ $quiz->id }}" style="display: none;">
+                <input type="text" name="quiz_order" value="{{ $quiz->order }}" style="display: none;">
                 @if ($quiz->order % 2 == 0)
                     @foreach ($quiz->answers as $answer)
                         <div class="col-6 p-0 m-0">
@@ -164,7 +166,10 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-
+            $('form').submit(function (e) {
+                e.preventDefault();
+                $('#quiz-wrapper').fadeOut(1000)
+            })
         })
     </script>
 @endpush
