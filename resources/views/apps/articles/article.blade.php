@@ -13,22 +13,29 @@
         }
 
         div.article-board {
-            top: calc(7% + 350px);
-            height: 350px;
-            width: 33vh;
+            transform: translate(-50%, -40%);
+            height: 50vh;
+            width: 22vw;
             font-size: 15pt;
             overflow-y: auto;
             color: #000;
             line-height: 1.2em;
-            border: red 1pt solid;
             padding-bottom: 10px;
+            z-index: 12;
         }
 
         .article-board h5 {
             text-align: center;
         }
 
-        @media screen and (max-width: 415px) {
+        @media screen and (max-width: 600px) {
+            div.article-board {
+                transform: translate(-50%, -65%);
+                height: 40vh;
+                width: 70vw;
+            }
+        }
+        @media screen and (max-width: 400px) {
             .article-board-img {
                 top: 40vh;
                 width: 100vw;
@@ -36,8 +43,8 @@
             }
 
             div.article-board {
-                top: calc(5% + 300px);
-                height: 300px;
+                transform: translate(-50%, -50%);
+                height: 45vh;
                 width: 70vw;
             }
         }
