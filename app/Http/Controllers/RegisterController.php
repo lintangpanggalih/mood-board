@@ -20,14 +20,14 @@ class RegisterController extends Controller
 
         try {
             // DB::beginTransaction();
-            $responden = new Responden([
+            $responden = [
                 'name' => $request->name,
                 'birth_date' => $request->birth_date,
                 'gender' => $request->gender,
                 'weight' => $request->weight,
                 'height' => $request->height,
                 'phone' => $request->phone,
-            ]);
+            ];
             // return ['asd'];
             session(['quiz' => [
                 'responden' => $responden,

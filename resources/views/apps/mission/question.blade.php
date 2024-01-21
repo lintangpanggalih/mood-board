@@ -27,13 +27,43 @@
             margin-top: -20px;
             width: 100%;
         }
+
         .centered-btn {
             position: absolute;
-            bottom: 6vh;
+            bottom: 10%;
             left: 50%;
             transform: translate(-50%);
             z-index: 10;
         }
+
+        .article-board-img {
+            top: 37%;
+            width: 45vh;
+            height: auto;
+            /* aspect-ratio: 1/2; */
+        }
+
+        div.article-board::-webkit-scrollbar {
+            display: none;
+        }
+
+        div.article-board {
+            transform: translate(-50%, -40%);
+            height: 50vh;
+            width: 22vw;
+            font-size: 15pt;
+            overflow-y: auto;
+            color: #000;
+            line-height: 1.2em;
+            padding-bottom: 10px;
+            z-index: 12;
+            box-shadow: inset 0 -10px 10px -10px #0a0a0a;
+        }
+
+        .article-board h5 {
+            text-align: center;
+        }
+
         @media only screen and (max-device-width: 600px) and (orientation:portrait) {
             .question-board-img {
                 top: 37%;
@@ -56,6 +86,26 @@
                 font-size: 14pt;
             }
 
+            .article-board-img {
+                top: 40vh;
+                width: 100vw;
+                height: auto;
+            }
+
+            div.article-board {
+                top: 45%;
+                height: 40vh;
+                width: 70vw;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+
+            div.article-board {
+                top: 45%;
+                height: 45vh;
+                width: 70vw;
+            }
         }
 
         @media screen and (max-width: 425px) {
@@ -129,12 +179,21 @@
             .answer-content.cube {
                 top: 20vh;
             }
+
             .centered-btn {
                 bottom: 0vh;
                 top: 95vh;
             }
+
+            .article-board-img {
+                top: 48%;
+                width: 30vw;
+                height: auto;
+            }
+
         }
     </style>
+    <img class="centered-img article-board-img" src="{{ asset('img/elements/31.png') }}" alt="" style="display: none;">
     <div class="container" style="height: 60vh;margin-top: 40vh;">
         <div id="quiz-wrapper">
             <img class="centered-img question-board-img" src="{{ asset('img/elements/28.png') }}" alt="">
@@ -179,7 +238,7 @@
         </div>
     </div>
     <div class="mt-5 text-center">
-        <a href="{{ route('mission.index') }}" class="centered-btn btn-submit-img next" style="display: none;">
+        <a href="{{ route('mission.index') }}" class="centered-btn next" style="display: none;">
             <img src="{{ asset('img/elements/7.png') }}" alt="" height="70px">
         </a>
     </div>
@@ -204,34 +263,53 @@
                     data: data,
                     success: function(resp) {
                         console.log(resp);
-                        let response = '', progress = resp.progress, order = Object.keys(progress).length + 1;
+                        let response_img = '',
+                            progress = resp.progress,
+                            order = Object.keys(progress).length;
                         // console.log(progress, order);
                         if (resp.data.is_correct) {
-                            response = $(
+                            response_img = $(
                                 `<img class="centered-img reaction-img" src="{{ asset('img/elements/12.png') }}" alt="">`
                             );
                         } else {
-                            response = $(
+                            response_img = $(
                                 `<img class="centered-img reaction-img" src="{{ asset('img/elements/13.png') }}" alt="">`
                             );
                         }
                         setTimeout(() => {
-                            response.hide().fadeIn(500)
-                            $('.container').append(response)
-                        }, 1000);
+                            response_img.hide().fadeIn(500)
+                            $('.container').append(response_img)
+                        }, 1500);
 
-                        // setTimeout(() => {
-                        //     $('.next').fadeIn(500);
-                        // }, 2000);
+                        (async () => {
+                            let article = await loadArticle(order)
+                            let article_html = $(`<div class="centered-img article-board">
+                                <h5 style="color: maroon;font-weight: bold;">"` + article.title + `"</h5>
+                                <p>` + article.content + `</p>
+                            </div>`)
+                            console.log(article);
+                            setTimeout(() => {
+                                $('.container img').fadeOut(500);
+                                $('.article-board-img').fadeIn(500)
+                                article_html.hide().fadeIn(500)
+                                $('.container').append(article_html)
+                            }, 3500);
+                            setTimeout(() => {
+                                $('.next').fadeIn(500)
+                            }, 4000);
+                        })()
                     },
                 })
             })
 
-            function loadArticle(order) {
-                let url = '{{ route("mission.article", ":order") }}'.replace('order', order)
-                console.log(url);
-                // $.get(url)
+            async function loadArticle(order) {
+                let url = '{{ route('mission.article', ':order') }}'.replace(':order', order);
+                let article = null;
 
+                await $.get(url, function(data) {
+                    article = data
+                })
+                return article
             }
             $("form button[type=submit]").click(function() {
                 $("button[type=submit]", $(this).parents("form")).removeAttr("clicked");

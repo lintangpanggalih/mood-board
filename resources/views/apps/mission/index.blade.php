@@ -33,7 +33,7 @@
                 left: 0;
             }
 
-            50% {
+            70% {
                 left: 0;
             }
 
@@ -115,7 +115,7 @@
                     left: 0;
                 }
 
-                50% {
+                70% {
                     left: 0;
                 }
 
@@ -134,7 +134,7 @@
         <div id="pyramid">
             <img class="centered-img pyramid" src="{{ asset('img/elements/pyramid1.png') }}" alt="">
 
-            @if (!session()->has('quiz.answer'))
+            @if (!session()->has('quiz.answer.1'))
                 <img class="centered-img lets-go slide" src="{{ asset('img/elements/lets-go.png') }}" alt="">
             @endif
         </div>
@@ -156,23 +156,82 @@
             //         .fadeIn(500)
             //     $('#pyramid').append(complete_1_img)
             // }, 3500);
+            let timeout = 4000;
+            if ("{{ session()->has('quiz.answer.1') }}") {
+                timeout = 1000
+                setTimeout(() => {
+                    let complete_1_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(500)
+                    $('#pyramid').append(complete_1_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.2') }}") {
+                setTimeout(() => {
+                    let complete_2_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-2-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(500)
+                    $('#pyramid').append(complete_2_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.3') }}") {
+                setTimeout(() => {
+                    let complete_3_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-3-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(500)
+                    $('#pyramid').append(complete_3_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.4') }}") {
+                setTimeout(() => {
+                    let complete_4_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-4-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(500)
+                    $('#pyramid').append(complete_4_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.5') }}") {
+                setTimeout(() => {
+                    let complete_5_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-5-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(500)
+                    $('#pyramid').append(complete_5_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.6') }}") {
+                setTimeout(() => {
+                    let complete_6_img = $(
+                            '<img class="centered-img pyramid" src="img/elements/pyramid-6-complete.png" alt="">'
+                        ).hide()
+                        .fadeIn(700)
+                    $('#pyramid').append(complete_6_img)
+                }, timeout);
+            }
+            if ("{{ session()->has('quiz.answer.8') }}") {
+                setTimeout(() => {
+                    let chest_img = $(
+                            '<img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">'
+                        ).hide()
+                        .fadeIn(700)
+                    $('#chest img').fadeOut(500)
+                    $('#chest').append(chest_img)
+                }, timeout + 1500);
+            }
             setTimeout(() => {
                 $('.next').fadeIn(500);
-            }, 4000);
+            }, timeout);
 
             // $('#chest').html(`
-            //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
-            // `);
+        //     <img class="centered-img chest-opening" src="img/elements/chest-opening-1-loop-medium.gif" alt="">
+        // `);
 
             // 
-            // let complete_1_img = $(
-            //         '<img class="centered-img pyramid" src="img/elements/pyramid-1-complete.png" alt="">').hide()
-            //     .fadeIn(500)
-            // $('#pyramid').append(complete_1_img)
-            // let complete_2_img = $(
-            //         '<img class="centered-img pyramid" src="img/elements/pyramid-2-complete.png" alt="">').hide()
-            //     .fadeIn(500)
-            // $('#pyramid').append(complete_2_img)
+
         })
     </script>
 @endpush

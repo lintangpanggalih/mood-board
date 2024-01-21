@@ -12,4 +12,9 @@ class Responden extends Model
     protected $table = 'respondens';
     protected $guarded = [];
     public $timestamps = false;
+
+    public function results()
+    {
+        return $this->hasMany(Result::class, 'responden_id', 'id');
+    }
 }

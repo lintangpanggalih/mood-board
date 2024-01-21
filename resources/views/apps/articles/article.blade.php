@@ -12,6 +12,9 @@
             /* aspect-ratio: 1/2; */
         }
 
+        div.article-board::-webkit-scrollbar {
+            display: none;
+        }
         div.article-board {
             transform: translate(-50%, -40%);
             height: 50vh;
@@ -22,6 +25,7 @@
             line-height: 1.2em;
             padding-bottom: 10px;
             z-index: 12;
+            box-shadow: inset 0 -10px 10px -10px #0a0a0a;
         }
 
         .article-board h5 {
