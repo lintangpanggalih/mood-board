@@ -27,14 +27,14 @@ class QuizController extends Controller
             if (sizeof($progress) == 8) {
                 $responden = session('quiz.responden');
                 $results = session('quiz.answer');
-                // return collect($results);
+                $score = collect($results)->where('is_correct', 1)->sum('is_correct');
                 $results = collect($results)->map(function ($result) {
                     return new Result([
                         'quiz_id' => $result['question'],
                         'answer_id' => $result['answer'],
                     ]);
                 });
-                // dd($results);
+
                 try {
                     DB::beginTransaction();
                     $responden = Responden::create($responden);
@@ -43,15 +43,17 @@ class QuizController extends Controller
                 } catch (\Throwable $th) {
                     DB::rollback();
                     abort(400);
-                    //throw $th;
                     return [
                         $th->getMessage(),
                         $th->getFile(),
                         $th->getLine()
                     ];
                 }
-                $progress = session()->forget('quiz');
-                return view('apps.mission.complete');
+                $data = [
+                    'score' => $score * 12.5 //0-100
+                ];
+                session()->forget('quiz');
+                return view('apps.mission.complete', $data);
             }
         }
 
