@@ -111,8 +111,24 @@
             }
         }
     </style>
+
+    <audio id="click-sound" src="{{ asset('music/click.mp3') }}" autoplay></audio>
     @yield('content')
     @include('layouts.footerjs')
+    <script>
+        $(document).ready(function() {
+            var btn_click_sound = document.getElementsByTagName("button");
+            for (var i = 0; i < btn_click_sound.length; i++) {
+                btn_click_sound[i].addEventListener("click", function() {
+                    document.getElementById('click-sound').play();
+                });
+            }
+
+            // $('button').click(function() {
+            //     document.getElementById('click-sound').play();
+            // })
+        })
+    </script>
 </body>
 
 </html>

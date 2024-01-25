@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('apps.home');
+    return view('apps.register');
 });
 Route::get('/introduce', function () {
     return view('apps.register');

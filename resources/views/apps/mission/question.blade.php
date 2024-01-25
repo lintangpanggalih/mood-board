@@ -238,7 +238,7 @@
         </div>
     </div>
     <div class="mt-5 text-center">
-        <a href="{{ route('mission.index') }}" class="centered-btn next" style="display: none;">
+        <a href="{{ route('mission.index') }}" class="centered-btn next btn-submit-img" style="display: none;">
             <img src="{{ asset('img/elements/7.png') }}" alt="" height="70px">
         </a>
     </div>
@@ -295,7 +295,7 @@
                                 $('.container').append(article_html)
                             }, 3500);
                             setTimeout(() => {
-                                $('.next').fadeIn(500)
+                                $('.next').fadeIn(200)
                             }, 4000);
                         })()
                     },

@@ -2,11 +2,19 @@
 @section('title')
     Home
 @endsection
-
+<style>
+    body {
+        overflow-y: scroll;
+    }
+</style>
 @section('content')
-    <img class="centered-img top" src="{{ asset('img/elements/3.png') }}" alt="">
-    <div class="container" style="margin-top: 35vh">
-        <form class="my-5" action="{{ route('register') }}" method="POST" style="color: #000;">
+    <img class="centered-img" id="welcome-img" src="{{ asset('img/elements/welcome.png') }}" alt="">
+    <audio id="bg-music" src="{{ asset('music/bg-music.mp3') }}" autoplay loop></audio>
+
+    <div class="container" style="margin-top: 30vh;display: none;">
+        <img class="centered-img top" id="title-img" src="{{ asset('img/elements/3.png') }}" alt=""
+            style="display: none;">
+        <form class="" action="{{ route('register') }}" method="POST" style="color: #000;display: none;">
             @csrf
             <div class="row mb-1">
                 <label for="name" class="col-12 mb-0" style="font-weight: bold;"><b>Nama Lengkap</b></label>
@@ -55,3 +63,20 @@
         </form>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $(this).click(function() {
+                const music = document.getElementById('bg-music');
+                music.play()
+
+                $('#welcome-img').slideUp();
+                setTimeout(() => {
+                    $('.container').fadeIn(500);
+                    $('form').slideDown(1000);
+                    $('#title-img').fadeIn(1000);
+                }, 1000);
+            })
+        });
+    </script>
+@endpush
