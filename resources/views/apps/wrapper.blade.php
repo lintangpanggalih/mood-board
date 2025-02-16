@@ -117,12 +117,19 @@
     @include('layouts.footerjs')
     <script>
         $(document).ready(function() {
-            var btn_click_sound = document.getElementsByTagName("button");
-            for (var i = 0; i < btn_click_sound.length; i++) {
-                btn_click_sound[i].addEventListener("click", function() {
-                    document.getElementById('click-sound').play();
-                });
-            }
+            var clickSound = new Audio("{{ asset('music/click.mp3') }}")
+            $(document).click(function() {
+                clickSound.currentTime = 0;
+                clickSound.preload = "auto";
+                clickSound.play();
+                // document.getElementById('click-sound').play();
+            });
+            // var btn_click_sound = document.getElementsByTagName("button");
+            // for (var i = 0; i < btn_click_sound.length; i++) {
+            //     btn_click_sound[i].addEventListener("click", function() {
+            //         document.getElementById('click-sound').play();
+            //     });
+            // }
 
             // $('button').click(function() {
             //     document.getElementById('click-sound').play();
