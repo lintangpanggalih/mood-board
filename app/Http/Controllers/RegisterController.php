@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
+    public function index(Request $request) {
+        
+        $request = Request::capture();
+        $token = $request->get('game-token');
+
+        $is_permit = DB::table('tokens')->where('token', $token)->count();
+        if (!$is_permit) {
+            abort(403);
+        }
+
+        return view('apps.register');
+    }
+
     public function register(Request $request)
     {
         $request->validate([
